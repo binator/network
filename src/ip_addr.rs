@@ -103,7 +103,7 @@ where
   (is(b'2'), is(b'5'), to_digit)
     .try_map(|(_, _, c)| {
       250u8
-        .checked_add(u8::from(c))
+        .checked_add(c)
         .ok_or_else(|| Context::new(IpAddrAtom::NotAnOctet))
     })
     .parse(stream)
@@ -116,7 +116,7 @@ where
   (is(b'2'), to_digit, to_digit)
     .try_map(|(_, b, c)| {
       200u8
-        .checked_add(u8::from(b) * 10 + u8::from(c))
+        .checked_add(b * 10 + c)
         .ok_or_else(|| Context::new(IpAddrAtom::NotAnOctet))
     })
     .parse(stream)
@@ -129,7 +129,7 @@ where
   (is(b'1'), to_digit, to_digit)
     .try_map(|(_, b, c)| {
       100u8
-        .checked_add(u8::from(b) * 10 + u8::from(c))
+        .checked_add(b * 10 + c)
         .ok_or_else(|| Context::new(IpAddrAtom::NotAnOctet))
     })
     .parse(stream)
@@ -141,8 +141,6 @@ where
 {
   (to_digit, to_digit)
     .try_map(|(a, b)| {
-      let a = u8::from(a);
-      let b = u8::from(b);
       if a == 0 {
         Err(Context::new(IpAddrAtom::LeadingZero))
       } else {
@@ -448,7 +446,10 @@ where
     .and(colon_h16)
     .or(ipv4_address.map(|ipv4| {
       let [a, b, c, d] = ipv4.octets();
-      ((a as u16) << 8 | (b as u16), (c as u16) << 8 | (d as u16))
+      (
+        (a as u16) << 8u16 | (b as u16),
+        (c as u16) << 8u16 | (d as u16),
+      )
     }))
     .parse(stream)
 }

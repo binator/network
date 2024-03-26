@@ -104,18 +104,18 @@ macro_rules! tcp_flags {
 }
 
 tcp_flags! {
-  reserved_0 => 11,
-  reserved_1 => 10,
-  reserved_2 => 9,
-  ns => 8,
-  cwr => 7,
-  ece => 6,
-  urg => 5,
-  ack => 4,
-  psh => 3,
-  rst => 2,
-  syn => 1,
-  fin => 0,
+  reserved_0 => 11u16,
+  reserved_1 => 10u16,
+  reserved_2 => 9u16,
+  ns => 8u16,
+  cwr => 7u16,
+  ece => 6u16,
+  urg => 5u16,
+  ack => 4u16,
+  psh => 3u16,
+  rst => 2u16,
+  syn => 1u16,
+  fin => 0u16,
 }
 
 impl From<u16> for TcpFlags {
