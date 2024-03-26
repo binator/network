@@ -6,29 +6,29 @@ use std::fmt::{
   Formatter,
 };
 
-use binator_base::{
-  any,
-  is,
-  octet,
-  BaseAtom,
-};
-use binator_core::{
-  Acc,
+use binator::{
+  base::{
+    any,
+    is,
+    octet,
+    primitive::{
+      u16_be,
+      u32_be,
+    },
+    BaseAtom,
+    IntRadixAtom,
+  },
+  utils::{
+    Acc,
+    Utils,
+    UtilsAtom,
+  },
   Contexting,
   CoreAtom,
   Parse,
   Parsed,
   Streaming,
   Success,
-};
-use binator_number::{
-  u16_be,
-  u32_be,
-  IntRadixAtom,
-};
-use binator_utils::{
-  Utils,
-  UtilsAtom,
 };
 
 /// Meta trait for tcp combinator
@@ -505,16 +505,18 @@ where
 mod tests {
   use core::fmt::Debug;
 
-  use binator_base::BaseAtom;
-  use binator_context::Tree;
-  use binator_core::{
+  use binator::{
+    base::{
+      BaseAtom,
+      IntRadixAtom,
+    },
+    context::Tree,
+    utils::UtilsAtom,
     CoreAtom,
     Parse,
     Parsed,
     Streaming,
   };
-  use binator_number::IntRadixAtom;
-  use binator_utils::UtilsAtom;
   use derive_more::{
     Display,
     From,

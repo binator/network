@@ -1,17 +1,17 @@
 //! Handles parsing of Ethernet headers
 
-use binator_base::octet;
-use binator_core::{
+use binator::{
+  base::octet,
+  utils::{
+    Utils,
+    UtilsAtom,
+  },
   Contexting,
   CoreAtom,
   Parse,
   Parsed,
   Streaming,
   Success,
-};
-use binator_utils::{
-  Utils,
-  UtilsAtom,
 };
 
 use crate::ether_type::{
@@ -94,8 +94,10 @@ where
 
 #[cfg(test)]
 mod tests {
-  use binator_context::Ignore;
-  use binator_core::Parsed;
+  use binator::{
+    context::Ignore,
+    Parsed,
+  };
 
   use super::{
     EtherType,

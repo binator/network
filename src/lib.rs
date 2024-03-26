@@ -120,19 +120,19 @@ pub(crate) use struct_variants;
 mod tests {
   use core::fmt::Debug;
 
-  use binator_base::{
-    all,
-    BaseAtom,
-  };
-  use binator_context::Tree;
-  use binator_core::{
+  use binator::{
+    base::{
+      all,
+      BaseAtom,
+      IntRadixAtom,
+    },
+    context::Tree,
+    utils::UtilsAtom,
     CoreAtom,
     Parse,
     Streaming,
     Success,
   };
-  use binator_number::IntRadixAtom;
-  use binator_utils::UtilsAtom;
   use derive_more::{
     Display,
     From,

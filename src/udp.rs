@@ -1,6 +1,8 @@
 //! Handles parsing of UDP header
 
-use binator_core::{
+use binator::{
+  base::primitive::u16_be,
+  utils::UtilsAtom,
   Contexting,
   CoreAtom,
   Parse,
@@ -8,8 +10,6 @@ use binator_core::{
   Streaming,
   Success,
 };
-use binator_number::u16_be;
-use binator_utils::UtilsAtom;
 
 /// Data of a UDP Header
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -62,8 +62,10 @@ where
 
 #[cfg(test)]
 mod tests {
-  use binator_context::Ignore;
-  use binator_core::Parsed;
+  use binator::{
+    context::Ignore,
+    Parsed,
+  };
 
   use super::UdpHeader;
 

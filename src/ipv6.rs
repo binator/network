@@ -8,22 +8,22 @@ use std::{
   net::Ipv6Addr,
 };
 
-use binator_base::{
-  nbit,
-  octet,
-  NBit,
-};
-use binator_core::{
+use binator::{
+  base::{
+    nbit,
+    octet,
+    NBit,
+  },
+  utils::{
+    Utils,
+    UtilsAtom,
+  },
   Contexting,
   CoreAtom,
   Parse,
   Parsed,
   Streaming,
   Success,
-};
-use binator_utils::{
-  Utils,
-  UtilsAtom,
 };
 
 use crate::ip_protocol::{
@@ -178,8 +178,10 @@ where
 mod tests {
   use std::net::Ipv6Addr;
 
-  use binator_context::Ignore;
-  use binator_core::Parsed;
+  use binator::{
+    context::Ignore,
+    Parsed,
+  };
   use pretty_assertions::assert_eq;
 
   use super::{

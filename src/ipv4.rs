@@ -8,24 +8,24 @@ use std::{
   net::Ipv4Addr,
 };
 
-use binator_base::{
-  any,
-  nbit,
-  octet,
-  NBit,
-};
-use binator_core::{
-  Acc,
+use binator::{
+  base::{
+    any,
+    nbit,
+    octet,
+    NBit,
+  },
+  utils::{
+    Acc,
+    Utils,
+    UtilsAtom,
+  },
   Contexting,
   CoreAtom,
   Parse,
   Parsed,
   Streaming,
   Success,
-};
-use binator_utils::{
-  Utils,
-  UtilsAtom,
 };
 
 use crate::ip_protocol::{
@@ -274,8 +274,10 @@ where
 mod tests {
   use std::net::Ipv4Addr;
 
-  use binator_context::Ignore;
-  use binator_core::Parsed;
+  use binator::{
+    context::Ignore,
+    Parsed,
+  };
 
   use super::{
     IPProtocol,

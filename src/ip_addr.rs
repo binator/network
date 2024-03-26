@@ -8,10 +8,25 @@ use std::net::{
   Ipv6Addr,
 };
 
-use binator_base::*;
-use binator_core::*;
-use binator_number::*;
-use binator_utils::*;
+use binator::{
+  base::{
+    is,
+    to_digit,
+    uint_radix,
+    BaseAtom,
+    IntRadixAtom,
+    Radix,
+  },
+  utils::{
+    Utils,
+    UtilsAtom,
+  },
+  Contexting,
+  CoreAtom,
+  Parse,
+  Parsed,
+  Streaming,
+};
 
 /// Atom of ip_addr parser
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -453,9 +468,11 @@ mod tests {
     str::FromStr,
   };
 
-  use binator_base::*;
-  use binator_context::Tree;
-  use binator_core::*;
+  use binator::{
+    base::*,
+    context::Tree,
+    *,
+  };
   use derive_more::{
     Display,
     From,

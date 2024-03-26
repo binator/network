@@ -1,14 +1,14 @@
 //! Handles parsing of Internet Protocol fields (shared between ipv4 and ipv6)
 
-use binator_base::octet;
-use binator_core::{
+use binator::{
+  base::octet,
+  utils::Utils,
   Contexting,
   CoreAtom,
   Parse,
   Parsed,
   Streaming,
 };
-use binator_utils::Utils;
 
 use crate::struct_variants;
 
@@ -313,8 +313,10 @@ where
 
 #[cfg(test)]
 mod tests {
-  use binator_context::Ignore;
-  use binator_core::Parsed;
+  use binator::{
+    context::Ignore,
+    Parsed,
+  };
 
   use super::IPProtocol;
 
